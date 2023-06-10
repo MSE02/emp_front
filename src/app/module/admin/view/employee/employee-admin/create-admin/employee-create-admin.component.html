@@ -1,0 +1,331 @@
+<p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'employeeTabPan' | translate}}" [modal]="true"
+    styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'employeeTabPan' | translate}}">
+                <div class="grid">
+
+                    <div class="field col-12 md:col-3">
+                        <label for="1">{{'employeeCode' | translate}}<span style="color: red;">*</span></label>
+                        <input class="mb-2 mr-2" type="text" pInputText placeholder="{{'employeeCode' | translate}}"
+                            id="1" [(ngModel)]="item.code" [ngClass]="{'ng-invalid ng-dirty' : !validEmployeeCode}" />
+                        <small class='p-error' *ngIf='!validEmployeeCode'>Code est obligatoire.</small>
+                    </div>
+
+
+
+                    <div class="field col-12 md:col-3">
+                        <label for="2">{{'employeeNom' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText placeholder="{{'employeeNom' | translate}}"
+                            id="2" [(ngModel)]="item.nom" />
+
+                    </div>
+
+
+
+                    <div class="field col-12 md:col-3">
+                        <label for="3">{{'employeePrenom' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText placeholder="{{'employeePrenom' | translate}}"
+                            id="3" [(ngModel)]="item.prenom" />
+
+                    </div>
+
+
+
+                    <div class="field col-12 md:col-3">
+                        <label for="4">{{'employeeCin' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText placeholder="{{'employeeCin' | translate}}"
+                            id="4" [(ngModel)]="item.cin" />
+
+                    </div>
+
+
+
+                    <div class="field col-12 md:col-3">
+                        <label for="5">{{'employeeDateNaissance' | translate}}</label>
+                        <p-calendar appendTo="body" id="5" [showTime]="false" [showSeconds]="false"
+                            placeholder="{{'employeeDateNaissance' | translate}}" [(ngModel)]="item.dateNaissance"
+                            dateFormat="{{dateFormat}}">
+                        </p-calendar>
+
+                    </div>
+
+                    <div class="field col-12 md:col-3">
+                        <label for="6">{{'employeeLieuNaissance' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                            placeholder="{{'employeeLieuNaissance' | translate}}" id="6"
+                            [(ngModel)]="item.lieuNaissance" />
+
+                    </div>
+
+
+
+                    <div class="field col-12 md:col-3">
+                        <label for="7">{{'employeeAdresse' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText placeholder="{{'employeeAdresse' | translate}}"
+                            id="7" [(ngModel)]="item.adresse" />
+
+                    </div>
+
+
+
+                    <div class="field col-12 md:col-3">
+                        <label for="8">{{'employeeTelephone' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                            placeholder="{{'employeeTelephone' | translate}}" id="8" [(ngModel)]="item.telephone" />
+
+                    </div>
+
+
+                    <div class="field col-12 md:col-3">
+                        <label for="9">{{ 'Email' | translate }}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText placeholder="{{ 'Email' | translate }}" id="9"
+                          [(ngModel)]="item.email"/>
+                        <small *ngIf="validateEmail(item)" class="error-message">example@email.com</small>
+                      </div>
+                      
+
+
+                    <div class="field col-12 md:col-3">
+                        <label for="9">{{'employeeSalaireJour' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="9" placeholder="{{'employeeSalaireJour' | translate}}"
+                            [(ngModel)]="item.salaireJour">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-12 md:col-3">
+                        <label for="10">{{'employeeSalaireMois' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="10" placeholder="{{'employeeSalaireMois' | translate}}"
+                            [(ngModel)]="item.salaireMois">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-12 md:col-3">
+                        <label for="11">{{'employeeSoldeConge' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="11" placeholder="{{'employeeSoldeConge' | translate}}"
+                            [(ngModel)]="item.soldeConge">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-12 md:col-3">
+                        <label for="12">{{'employeeCnss' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText placeholder="{{'employeeCnss' | translate}}"
+                            id="12" [(ngModel)]="item.cnss" />
+
+                    </div>
+
+
+
+                    <div class="field col-11 md:col-2">
+                        <label for="13">{{'employeeContrat' | translate}}</label>
+                        <p-dropdown appendTo="body" [options]="contrats" [(ngModel)]="item.contrat" id="13"
+                            [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="code"
+                            placeholder="{{'employeeContrat' | translate}}">
+                        </p-dropdown>
+
+                    </div>
+                    <div class="field col-11 md:col-2">
+                        <label for="14">{{'employeeUniteAdministrative' | translate}}</label>
+                        <p-dropdown appendTo="body" [options]="uniteAdministratives"
+                            [(ngModel)]="item.uniteAdministrative" id="14" [filter]="true" filterMatchMode="contains"
+                            [showClear]="true" optionLabel="libelle"
+                            placeholder="{{'employeeUniteAdministrative' | translate}}">
+                        </p-dropdown>
+                    </div>
+
+                    <div class="field col-11 md:col-2">
+                        <label for="17">{{'employeeCategorieEmployee' | translate}}</label>
+                        <p-dropdown appendTo="body" [options]="categorieEmployees" [(ngModel)]="item.categorieEmployee"
+                            id="17" [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="libelle"
+                            placeholder="{{'employeeCategorieEmployee' | translate}}">
+                        </p-dropdown>
+
+                    </div>
+                    <div class="col-1">
+                        <label></label>
+                        <button pButton pRipple type="button" icon="pi pi-plus"
+                            (click)="openCreateCategorieEmployee('CategorieEmployee')"
+                            class="p-button-success one-colonne-btn-success-align"></button>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <!--          <p-tabPanel header="employeeAbsences">
+                <p-tabView [(activeIndex)]="activeTab">
+                    <p-tabPanel header="Création">
+                        <div class="grid">
+                            <div class="field col-12 md:col-4">
+                                <label for="1">Date debut</label>
+                                <p-calendar appendTo="body" id="1" [showTime]="true" [showSeconds]="false"
+                                    placeholder="Date debut" [(ngModel)]="absencesElement.dateDebut"
+                                    dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label for="2">Date fin a</label>
+                                <p-calendar appendTo="body" id="2" [showTime]="true" [showSeconds]="false"
+                                    placeholder="Date fin a" [(ngModel)]="absencesElement.dateFinA"
+                                    dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                            </div>
+                            <div class="field col-11 md:col-3">
+                                <label>Type absence</label>
+                                <p-dropdown appendTo="body" [options]="typeAbsences"
+                                    [(ngModel)]="absencesElement.typeAbsence" id="3" [filter]="true"
+                                    filterMatchMode="contains" [showClear]="true" optionLabel="libelle"
+                                    placeholder="Type absence">
+                                </p-dropdown>
+
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label for="5">Description</label>
+                                <input class="mb-2 mr-2" type="text" pInputText placeholder="Description" id="5"
+                                    [(ngModel)]="absencesElement.description" autofocus>
+
+                            </div>
+                            <div class="field col-12 md:col-1">
+                                <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK"
+                                    (click)="addAbsences()"></button>
+                            </div>
+
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Liste {{item.absences?.length > 0 ? '(' + item.absences?.length + ')' : ''}}">
+                        <div class="card">
+                            <p-table [value]="item.absences" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Date debut</th>
+                                        <th>Date fin a</th>
+                                        <th>Type absence</th>
+                                        <th>Description</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.dateDebut | date: dateFormatColumn}}</td>
+                                        <td>{{p.dateFinA | date: dateFormatColumn}}</td>
+                                        <td>{{p.typeAbsence?.libelle}}</td>
+                                        <td>{{p.description}}</td>
+                                        <td>
+                                            <button (click)="deleteAbsence(p)" pButton type="button" icon="pi pi-times"
+                                                class="p-button-rounded p-button-danger"></button>
+                                            <button (click)="editAbsence(p)" pButton type="button" icon="pi pi-pencil"
+                                                class="p-button-rounded p-button-success mr-2"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+
+                    </p-tabPanel>
+                </p-tabView>
+            </p-tabPanel>
+
+            <p-tabPanel header="employeeConges">
+                <p-tabView [(activeIndex)]="activeTab">
+                    <p-tabPanel header="Création">
+                        <div class="grid">
+                            <div class="field col-12 md:col-4">
+                                <label for="1">Code<span style="color: red;">*</span></label>
+                                <input class="mb-2 mr-2" type="text" pInputText placeholder="Code" id="1"
+                                    [(ngModel)]="congesElement.code" autofocus
+                                    [ngClass]="{'ng-invalid ng-dirty' : !validCongesCode}">
+                                <small class='p-error' *ngIf='!validCongesCode'>Code est obligatoire.</small>
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label for="2">Durre</label>
+                                <p-inputNumber class="mb-2 mr-2" id="durre" placeholder="Durre"
+                                    [(ngModel)]="congesElement.durre"></p-inputNumber>
+
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label for="3">Date debut</label>
+                                <p-calendar appendTo="body" id="3" [showTime]="true" [showSeconds]="false"
+                                    placeholder="Date debut" [(ngModel)]="congesElement.dateDebut"
+                                    dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label for="4">Date fin</label>
+                                <p-calendar appendTo="body" id="4" [showTime]="true" [showSeconds]="false"
+                                    placeholder="Date fin" [(ngModel)]="congesElement.dateFin"
+                                    dateFormat="{{dateFormat}}" [showIcon]="true"></p-calendar>
+
+                            </div>
+                            <div class="field col-11 md:col-3">
+                                <label>Type conge</label>
+                                <p-dropdown appendTo="body" [options]="typeConges" [(ngModel)]="congesElement.typeConge"
+                                    id="5" [filter]="true" filterMatchMode="contains" [showClear]="true"
+                                    optionLabel="code" placeholder="Type conge">
+                                </p-dropdown>
+
+                            </div>
+                            <div class="field col-12 md:col-1">
+                                <button pButton pRipple type="button" icon="pi pi-plus" class="mt-4" label="OK"
+                                    (click)="addConges()"></button>
+                            </div>
+
+                        </div>
+                    </p-tabPanel>
+                    <p-tabPanel header="Liste {{item.conges?.length > 0 ? '(' + item.conges?.length + ')' : ''}}">
+                        <div class="card">
+                            <p-table [value]="item.conges" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Durre</th>
+                                        <th>Date debut</th>
+                                        <th>Date fin</th>
+                                        <th>Type conge</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.code}}</td>
+                                        <td>{{p.durre}}</td>
+                                        <td>{{p.dateDebut | date: dateFormatColumn}}</td>
+                                        <td>{{p.dateFin | date: dateFormatColumn}}</td>
+                                        <td>{{p.typeConge?.code}}</td>
+                                        <td>
+                                            <button (click)="deleteConge(p)" pButton type="button" icon="pi pi-times"
+                                                class="p-button-rounded p-button-danger"></button>
+                                            <button (click)="editConge(p)" pButton type="button" icon="pi pi-pencil"
+                                                class="p-button-rounded p-button-success mr-2"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+
+                    </p-tabPanel>
+                </p-tabView>
+            </p-tabPanel>-->
+
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="grid-step">
+            <div style="margin-left: auto;">
+                <button pButton pRipple label="{{'validate' | translate}}" icon="pi pi-check" style="margin:10px"
+                    (click)="save()" [disabled]="!isEmailValid"></button>
+            </div>
+            <div>
+                <button pButton pRipple label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined"
+                    (click)="hideCreateDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+
+    <app-categorie-employee-create-admin></app-categorie-employee-create-admin>
+
+
+</p-dialog>

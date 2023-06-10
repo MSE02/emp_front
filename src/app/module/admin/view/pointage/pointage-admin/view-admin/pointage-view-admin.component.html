@@ -1,0 +1,49 @@
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'pointageTabPan' | translate}}" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'pointageTabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'Code' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true"
+                            placeholder="{{'Code' | translate}}" autofocus id="1" [(ngModel)]="item.code">
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'Heure arrive' | translate}}</label>
+                        <p-calendar id="2" [disabled]="true" [showTime]="true" [showSeconds]="false"
+                            placeholder="{{'Heure arrive' | translate}}" [(ngModel)]="item.heureArrive"
+                            dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'Heure sortie' | translate}}</label>
+                        <p-calendar id="3" [disabled]="true" [showTime]="true" [showSeconds]="false"
+                            placeholder="{{'Heure sortie' | translate}}" [(ngModel)]="item.heureSortie"
+                            dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'Temps retard' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="4" [disabled]="true"
+                            placeholder="{{'Temps retard' | translate}}" [(ngModel)]="item.tempsRetard"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'Employee' | translate}}</label>
+                        <p-dropdown [options]="employees" [(ngModel)]="item.employee" id="5" [disabled]="true"
+                            optionLabel="code" placeholder="{{'Employee' | translate}}"></p-dropdown>
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined"
+                    (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>

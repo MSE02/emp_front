@@ -1,0 +1,163 @@
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'employeeTabPan' | translate}}" [modal]="true"
+    styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'employeeTabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-3">
+                        <label for="1">{{'Code' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true"
+                            placeholder="{{'Code' | translate}}" autofocus id="1" [(ngModel)]="item.code">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="2">{{'Nom' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true"
+                            placeholder="{{'Nom' | translate}}" autofocus id="2" [(ngModel)]="item.nom">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="3">{{'Prenom' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true"
+                            placeholder="{{'Prenom' | translate}}" autofocus id="3" [(ngModel)]="item.prenom">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="4">{{'Cin' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true"
+                            placeholder="{{'Cin' | translate}}" autofocus id="4" [(ngModel)]="item.cin">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="5">{{'Date naissance' | translate}}</label>
+                        <p-calendar id="5" [disabled]="true" [showTime]="true" [showSeconds]="false"
+                            placeholder="{{'Date naissance' | translate}}" [(ngModel)]="item.dateNaissance"
+                            dateFormat="{{dateFormat}}"></p-calendar>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="6">{{'Lieu naissance' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true"
+                            placeholder="{{'Lieu naissance' | translate}}" autofocus id="6"
+                            [(ngModel)]="item.lieuNaissance">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="7">{{'Adresse' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true"
+                            placeholder="{{'Adresse' | translate}}" autofocus id="7" [(ngModel)]="item.adresse">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="8">{{'Telephone' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true"
+                            placeholder="{{'Telephone' | translate}}" autofocus id="8" [(ngModel)]="item.telephone">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="8">{{'Email' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true"
+                            placeholder="{{'Email'| translate}}" autofocus id="9" [(ngModel)]="item.email">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="9">{{'Salaire jour' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="9" [disabled]="true"
+                            placeholder="{{'Salaire jour' | translate}}" [(ngModel)]="item.salaireJour"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="10">{{'Salaire mois' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="10" [disabled]="true"
+                            placeholder="{{'Salaire mois' | translate}}" [(ngModel)]="item.salaireMois"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="11">{{'Solde conge' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="11" [disabled]="true"
+                            placeholder="{{'Solde conge' | translate}}" [(ngModel)]="item.soldeConge"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="12">{{'Cnss' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true"
+                            placeholder="{{'Cnss' | translate}}" autofocus id="12" [(ngModel)]="item.cnss">
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="13">{{'Contrat' | translate}}</label>
+                        <p-dropdown [options]="contrats" [(ngModel)]="item.contrat" id="13" [disabled]="true"
+                            optionLabel="code" placeholder="{{'Contrat' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="14">{{'Unite administrative' | translate}}</label>
+                        <p-dropdown [options]="uniteAdministratives" [(ngModel)]="item.uniteAdministrative" id="14"
+                            [disabled]="true" optionLabel="libelle"
+                            placeholder="{{'Unite administrative' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label for="17">{{'Categorie employee' | translate}}</label>
+                        <p-dropdown [options]="categorieEmployees" [(ngModel)]="item.categorieEmployee" id="17"
+                            [disabled]="true" optionLabel="libelle"
+                            placeholder="{{'Categorie employee' | translate}}"></p-dropdown>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <!--
+
+
+            <p-tabPanel header="employeeAbsences">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="item.absences" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Date debut</th>
+                                        <th>Date fin a</th>
+                                        <th>Type absence</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.dateDebut | date: dateFormatColumn}}</td>
+                                        <td>{{p.dateFinA | date: dateFormatColumn}}</td>
+                                        <td>{{p.typeAbsence?.libelle}}</td>
+                                        <td>{{p.description}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="employeeConges">
+                <div class="grid">
+                    <div class="col">
+                        <div class="card">
+                            <p-table [value]="item.conges" [scrollable]="true" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Durre</th>
+                                        <th>Date debut</th>
+                                        <th>Date fin</th>
+                                        <th>Type conge</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-p>
+                                    <tr>
+                                        <td>{{p.code}}</td>
+                                        <td>{{p.durre}}</td>
+                                        <td>{{p.dateDebut | date: dateFormatColumn}}</td>
+                                        <td>{{p.dateFin | date: dateFormatColumn}}</td>
+                                        <td>{{p.typeConge?.code}}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+        -->
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined"
+                    (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>

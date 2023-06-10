@@ -1,0 +1,86 @@
+<p-dialog [(visible)]="editDialog" [style]="{width: '70vw'}" header="{{'congeTabPan' | translate}}" [modal]="true"
+    styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'congeTabPan' | translate}}">
+                <div class="grid">
+
+
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'congeCode' | translate}}<span style="color: red;">*</span></label>
+                        <input appendTo="body" class="mb-2 mr-2" type="text" pInputText
+                            placeholder="{{'congeCode' | translate}}" id="1" [(ngModel)]="item.code"
+                            [ngClass]="{'ng-invalid ng-dirty' : !validCongeCode}" />
+                        <small class='p-error' *ngIf='!validCongeCode'>Code est obligatoire.</small>
+                    </div>
+
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'congeDurre' | translate}}</label>
+                        <p-inputNumber appendTo="body" class="mb-2 mr-2" id="2" [disabled]="true"
+                            placeholder="{{'congeDurre' | translate}}" [(ngModel)]="item.durre">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-12 md:col-6">
+                        <label for="3">{{'congeDateDebut' | translate}}</label>
+                        <p-calendar appendTo="body" id="3" [showTime]="false" [showSeconds]="false"
+                            placeholder="{{'congeDateDebut' | translate}}" [(ngModel)]="item.dateDebut">
+                        </p-calendar>
+
+                    </div>
+
+                    <div class="field col-12 md:col-6">
+                        <label for="4">{{'congeDateFin' | translate}}</label>
+                        <p-calendar appendTo="body" id="4" [showTime]="false" [showSeconds]="false"
+                            placeholder="{{'congeDateFin' | translate}}" [(ngModel)]="item.dateFin">
+                        </p-calendar>
+
+                    </div>
+
+                    <div class="field col-11 md:col-5">
+                        <label for="5">{{'congeTypeConge' | translate}}</label>
+                        <p-dropdown appendTo="body" [options]="typeConges" [(ngModel)]="item.typeConge" id="5"
+                            [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="code"
+                            placeholder="{{'congeTypeConge' | translate}}">
+                        </p-dropdown>
+
+                    </div>
+                    <div class="col-1">
+                        <label></label>
+                        <button pButton pRipple type="button" icon="pi pi-plus"
+                            (click)="openCreateTypeConge('TypeConge')"
+                            class="p-button-success one-colonne-btn-success-align"></button>
+                    </div>
+
+                    <div class="field col-11 md:col-5">
+                        <label for="6">{{'congeEmployee' | translate}}</label>
+                        <p-dropdown appendTo="body" [options]="employees" [(ngModel)]="item.employee" id="6"
+                            [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="code"
+                            placeholder="{{'congeEmployee' | translate}}">
+                        </p-dropdown>
+
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined"
+                    (click)="hideEditDialog()"></button>
+            </div>
+            <div>
+                <button pButton pRipple label="Valider" icon="pi pi-check" style="margin:10px"
+                    (click)="edit()"></button>
+            </div>
+        </div>
+    </ng-template>
+
+    <app-type-conge-create-admin></app-type-conge-create-admin>
+
+
+</p-dialog>

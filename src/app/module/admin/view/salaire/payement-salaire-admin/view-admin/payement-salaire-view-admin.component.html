@@ -1,0 +1,60 @@
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '70vw'}" header="{{'payementSalaireTabPan' | translate}}" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'payementSalaireTabPan' | translate}}">
+                <div class="grid">
+                    <div class="field col-12 md:col-4">
+                        <label for="1">{{'Code' | translate}}</label>
+                        <input class="mb-2 mr-2" type="text" pInputText [disabled]="true" placeholder="{{'Code' | translate}}" autofocus  id="1" [(ngModel)]="item.code">
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="2">{{'Employee' | translate}}</label>
+                        <p-dropdown [options]="employees" [(ngModel)]="item.employee" id="2" [disabled]="true" optionLabel="code" placeholder="{{'Employee' | translate}}"></p-dropdown>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="3">{{'Mois' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="3" [disabled]="true" placeholder="{{'Mois' | translate}}" [(ngModel)]="item.mois"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="4">{{'Annee' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="4" [disabled]="true" placeholder="{{'Annee' | translate}}" [(ngModel)]="item.annee"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="5">{{'Salaire' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="5" [disabled]="true" placeholder="{{'Salaire' | translate}}" [(ngModel)]="item.salaire"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="6">{{'Nombre jours conge' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="6" [disabled]="true" placeholder="{{'Nombre jours conge' | translate}}" [(ngModel)]="item.nombreJoursConge"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="7">{{'Nombre jours absence' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="7" [disabled]="true" placeholder="{{'Nombre jours absence' | translate}}" [(ngModel)]="item.nombreJoursAbsence"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="8">{{'Baisse salaire' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="8" [disabled]="true" placeholder="{{'Baisse salaire' | translate}}" [(ngModel)]="item.baisseSalaire"></p-inputNumber>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="9">{{'Salaire final' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="9" [disabled]="true" placeholder="{{'Salaire final' | translate}}" [(ngModel)]="item.salaireFinal"></p-inputNumber>
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer" >
+        <div class="grid-footer">
+            <div>
+                <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-outlined" (click)="hideViewDialog()"></button>
+            </div>
+        </div>
+    </ng-template>
+</p-dialog>
+
+
+

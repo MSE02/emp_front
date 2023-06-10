@@ -1,0 +1,108 @@
+<p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'payementSalaireTabPan' | translate}}"
+    [modal]="true" styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'payementSalaireTabPan' | translate}}">
+                <div class="grid">
+
+                    <div class="field col-12 md:col-4">
+                        <label for="1">{{'payementSalaireCode' | translate}}<span style="color: red;">*</span></label>
+                        <input class="mb-2 mr-2" type="text" pInputText
+                            placeholder="{{'payementSalaireCode' | translate}}" id="1" [(ngModel)]="item.code"
+                            [ngClass]="{'ng-invalid ng-dirty' : !validPayementSalaireCode}" />
+                        <small class='p-error' *ngIf='!validPayementSalaireCode'>Code est obligatoire.</small>
+                    </div>
+
+
+
+                    <div class="field col-11 md:col-3">
+                        <label for="2">{{'payementSalaireEmployee' | translate}}</label>
+                        <p-dropdown appendTo="body" [options]="employees" [(ngModel)]="item.employee" id="2"
+                            [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="code"
+                            placeholder="{{'payementSalaireEmployee' | translate}}">
+                        </p-dropdown>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label for="3">{{'payementSalaireMois' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="3" placeholder="{{'payementSalaireMois' | translate}}"
+                            [(ngModel)]="item.mois">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-12 md:col-4">
+                        <label for="4">{{'payementSalaireAnnee' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="4" placeholder="{{'payementSalaireAnnee' | translate}}"
+                            [(ngModel)]="item.annee">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-12 md:col-4">
+                        <label for="5">{{'payementSalaireSalaire' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="5" [disabled]="true" placeholder="{{'payementSalaireSalaire' | translate}}"
+                            [(ngModel)]="item.salaire">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-12 md:col-4">
+                        <label for="6">{{'payementSalaireNombreJoursConge' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="6" [disabled]="true"
+                            placeholder="{{'payementSalaireNombreJoursConge' | translate}}"
+                            [(ngModel)]="item.nombreJoursConge">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-12 md:col-4">
+                        <label for="7">{{'payementSalaireNombreJoursAbsence' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="7" [disabled]="true"
+                            placeholder="{{'payementSalaireNombreJoursAbsence' | translate}}"
+                            [(ngModel)]="item.nombreJoursAbsence">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-12 md:col-4">
+                        <label for="8">{{'payementSalaireBaisseSalaire' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="8" [disabled]="true"
+                            placeholder="{{'payementSalaireBaisseSalaire' | translate}}"
+                            [(ngModel)]="item.baisseSalaire">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-12 md:col-4">
+                        <label for="9">{{'payementSalaireSalaireFinal' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="9" [disabled]="true"
+                            placeholder="{{'payementSalaireSalaireFinal' | translate}}" [(ngModel)]="item.salaireFinal">
+                        </p-inputNumber>
+
+                    </div>
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="grid-step">
+            <div style="margin-left: auto;">
+                <button pButton pRipple label="{{'validate' | translate}}" icon="pi pi-check" style="margin:10px"
+                    (click)="save()"></button>
+            </div>
+            <div>
+                <button pButton pRipple label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined"
+                    (click)="hideCreateDialog()"></button>
+            </div>
+
+        </div>
+    </ng-template>
+
+
+
+</p-dialog>

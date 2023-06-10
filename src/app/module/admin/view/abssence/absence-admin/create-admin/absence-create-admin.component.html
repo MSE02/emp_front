@@ -1,0 +1,87 @@
+<p-dialog [(visible)]="createDialog" [style]="{width: '70vw'}" header="{{'absenceTabPan' | translate}}" [modal]="true"
+    styleClass="p-fluid" [maximizable]="true" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="{{'absenceTabPan' | translate}}">
+                <div class="grid">
+
+                    <div class="field col-12 md:col-6">
+                        <label for="1">{{'absenceDateDebut' | translate}}</label>
+                        <p-calendar appendTo="body" id="1" [showTime]="false" [showSeconds]="false"
+                            placeholder="{{'absenceDateDebut' | translate}}" [(ngModel)]="item.dateDebut"
+                            dateFormat="{{dateFormat}}">
+                        </p-calendar>
+
+                    </div>
+
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'absenceDateFinA' | translate}}</label>
+                        <p-calendar appendTo="body" id="2" [showTime]="false" [showSeconds]="false"
+                            placeholder="{{'absenceDateFinA' | translate}}" [(ngModel)]="item.dateFinA"
+                            dateFormat="{{dateFormat}}">
+                        </p-calendar>
+
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="2">{{'Duree' | translate}}</label>
+                        <p-inputNumber class="mb-2 mr-2" id="2" [disabled]="true"
+                            placeholder="{{'Duree' | translate}}" [(ngModel)]="item.duree">
+                        </p-inputNumber>
+
+                    </div>
+
+                    <div class="field col-11 md:col-5">
+                        <label for="3">{{'absenceTypeAbsence' | translate}}</label>
+                        <p-dropdown appendTo="body" [options]="typeAbsences" [(ngModel)]="item.typeAbsence" id="3"
+                            [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="libelle"
+                            placeholder="{{'absenceTypeAbsence' | translate}}">
+                        </p-dropdown>
+
+                    </div>
+                    <div class="col-1">
+                        <label></label>
+                        <button pButton pRipple type="button" icon="pi pi-plus"
+                            (click)="openCreateTypeAbsence('TypeAbsence')"
+                            class="p-button-success one-colonne-btn-success-align"></button>
+                    </div>
+                    <div class="field col-11 md:col-5">
+                        <label for="4">{{'absenceEmployee' | translate}}</label>
+                        <p-dropdown appendTo="body" [options]="employees" [(ngModel)]="item.employee" id="4"
+                            [filter]="true" filterMatchMode="contains" [showClear]="true" optionLabel="code"
+                            placeholder="{{'absenceEmployee' | translate}}">
+                        </p-dropdown>
+
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <label for="5">{{'absenceDescription' | translate}}</label>
+                        <textarea id="5" pInputTextarea rows="5" cols="30"
+                            placeholder="{{'absenceDescription' | translate}}"
+                            [(ngModel)]="item.description"></textarea>
+
+                    </div>
+
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div class="grid-step">
+            <div style="margin-left: auto;">
+                <button pButton pRipple label="{{'validate' | translate}}" icon="pi pi-check" style="margin:10px"
+                    (click)="save()"></button>
+            </div>
+            <div>
+                <button pButton pRipple label="{{'cancel' | translate}}" icon="pi pi-times" class="p-button-outlined"
+                    (click)="hideCreateDialog()"></button>
+            </div>
+
+        </div>
+    </ng-template>
+
+    <app-type-absence-create-admin></app-type-absence-create-admin>
+
+
+</p-dialog>
