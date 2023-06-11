@@ -99,7 +99,7 @@ export class EmployeeListAdminComponent extends AbstractListController<EmployeeD
     public hasLongAbsence(employee: EmployeeDto): boolean {
         if (employee.absences && employee.absences.length > 0) {
             for (const absence of employee.absences) {
-                if (absence.duree >= 3) {
+                if (absence.duree >= 3 && absence.dateFinA == null) {
                     return true;
                 }
             }
@@ -112,20 +112,27 @@ export class EmployeeListAdminComponent extends AbstractListController<EmployeeD
         this.service.findAll().subscribe(
             (employees: EmployeeDto[]) => {
                 this.employees = employees;
-
-                let hasAbsentEmployees = false;
-
-                for (const employee of this.employees) {
-                    if (this.hasLongAbsence(employee)) {
-                        const message = `L'employé ${employee.nom} ${employee.prenom} est absent depuis plus de 3 jours.`;
-                        window.alert(message);
-                        hasAbsentEmployees = true;
-                    }
+                if (this.employees === null) {
+                    alert("aucun employé dans la base de données")
                 }
+                else {
+                    let message = "les employés absent plus que 3 jours sont :\n\n"
+                    let hasAbsentEmployees = false;
+                    let i = 0;
+                    for (const employee of this.employees) {
 
-                if (!hasAbsentEmployees) {
-                    const message = "Aucun employé n'est absent depuis plus de 3 jours.";
-                    window.alert(message);
+                        if (this.hasLongAbsence(employee)) {
+                            message += `- ${employee.nom} ${employee.prenom}\n`;
+                            i++;
+                            hasAbsentEmployees = true;
+                        }
+                    }
+                    if (i > 0) { window.alert(message); }
+
+                    if (!hasAbsentEmployees) {
+                        const messag = "Aucun employé n'est absent depuis plus de 3 jours.";
+                        window.alert(messag);
+                    }
                 }
             },
             (error: any) => {
