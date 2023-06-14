@@ -4,16 +4,20 @@
         <div class="card">
             <p-toolbar styleClass="mb-4">
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label=" {{'new' | translate}}" icon="pi pi-plus"
+                    <button pButton pRipple label="{{'new' | translate}}" icon="pi pi-plus"
                         class="p-button-success mr-2 mb-2" (click)="openCreate('Employee')"></button>
-                    <button [disabled]="isSelectionDisabled()" pButton pRipple label=" {{'delete' | translate}}"
+                    <button [disabled]="isSelectionDisabled()" pButton pRipple label="{{'delete' | translate}}"
                         icon="pi pi-trash" class="p-button-danger mr-2 mb-2" (click)="deleteMultiple()"></button>
-                    <button pButton pRipple label=" {{'search' | translate}}"
+                    <button pButton pRipple label="{{'search' | translate}}"
                         icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
                         class="p-button-warning mr-2 mb-2" (click)="showSearch()"></button>
-                    <button pButton pRipple label="Notifier les absences" class="p-button-info mr-2 mb-2" (click)="informLongAbsence()"></button>
+                    <button pButton pRipple label="Notifier les absences" class="p-button-info mr-2 mb-2"
+                        (click)="informLongAbsence()">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
                 </ng-template>
-                
+
+
                 <ng-template pTemplate="right">
                     <div class="flex">
                         <p-splitButton label=" {{'export' | translate}}" icon="pi pi-download"
@@ -342,9 +346,9 @@
                                 (click)="view(element)"></button>
                             <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2"
                                 (click)="delete(element)"></button>
-                                <button pButton pRipple icon="pi pi-envelope" class="p-button-rounded p-button-raised p-button-warning"
-                                *ngIf="hasLongAbsence(element)"
-                                (click)="sendEmailForAbsence(element)"></button>                        
+                            <button pButton pRipple icon="pi pi-envelope"
+                                class="p-button-rounded p-button-raised p-button-warning"
+                                *ngIf="hasLongAbsence(element)" (click)="sendEmailForAbsence(element)"></button>
                             <button pButton pRipple icon="pi pi-copy"
                                 class="p-button-rounded p-button-raised p-button-secondary"
                                 (click)="duplicate(element)"></button>

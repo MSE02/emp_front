@@ -113,8 +113,8 @@ export class EmployeeListAdminComponent extends AbstractListController<EmployeeD
             (employees: EmployeeDto[]) => {
                 this.employees = employees;
                 if (this.employees === null) {
-                    alert("aucun employé dans la base de données")
-                }
+                    alert("Aucun employé dans la base de données");
+                }                
                 else {
                     let message = "les employés absent plus que 3 jours sont :\n\n"
                     let hasAbsentEmployees = false;

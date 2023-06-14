@@ -62,7 +62,7 @@
                             id="5-2"></p-inputNumber>
                         <label for="5-2">{{'Salaire' | translate}} Max</label>
                     </span>
-                    <span class=" p-float-label mr-3 align-search-items mt-4">
+                   <!-- <span class=" p-float-label mr-3 align-search-items mt-4">
                         <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.nombreJoursCongeMin"
                             id="6-1"></p-inputNumber>
                         <label for="6-1">{{'Nombre jours conge' | translate}} Min</label>
@@ -70,8 +70,8 @@
                     <span class=" p-float-label mr-3 align-search-items mt-4">
                         <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.nombreJoursCongeMax"
                             id="6-2"></p-inputNumber>
-                        <label for="6-2">{{'Nombre jours conge' | translate}} Max</label>
-                    </span>
+                        <label for="6-2">{{'Nombre jours conge' | translate}} Max</label> 
+                    </span>-->
                     <span class=" p-float-label mr-3 align-search-items mt-4">
                         <p-inputNumber class="mr-2" mode="decimal" [(ngModel)]="criteria.nombreJoursAbsenceMin"
                             id="7-1"></p-inputNumber>
@@ -112,7 +112,7 @@
 
 
             <p-table #dt [value]="items" [columns]="cols" [rows]="8" [paginator]="false"
-                [globalFilterFields]="['code', 'employeecode', 'mois', 'annee', 'salaire', 'nombreJoursConge', 'nombreJoursAbsence', 'baisseSalaire', 'salaireFinal']"
+                [globalFilterFields]="['code', 'employeecode', 'mois', 'annee', 'salaire', 'nombreJoursAbsence', 'baisseSalaire', 'salaireFinal']"
                 [(selection)]="selections" [rowHover]="true" dataKey="id" styleClass="p-datatable-customers"
                 currentPageReportTemplate="{{'Les éléments de {first} à {last} sur {totalRecords} ' | translate}}"
                 [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" selectionMode="multiple">
@@ -173,14 +173,14 @@
                             </div>
                         </th>
 
-
+                    <!--
                         <th pSortableColumn="nombreJoursConge">
                             <div class="p-d-flex p-jc-between p-ai-center">
                                 <span>{{'Nombre jours conge' | translate}}</span>
                                 <p-sortIcon field="nombreJoursConge"></p-sortIcon>
                             </div>
                         </th>
-
+                    -->
 
                         <th pSortableColumn="nombreJoursAbsence">
                             <div class="p-d-flex p-jc-between p-ai-center">
@@ -229,7 +229,7 @@
                         <td>{{element.salaire}}</td>
 
 
-                        <td>{{element.nombreJoursConge}}</td>
+                      <!--  <td>{{element.nombreJoursConge}}</td> -->
 
 
                         <td>{{element.nombreJoursAbsence}}</td>
